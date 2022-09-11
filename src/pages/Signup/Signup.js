@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { validation } from "./../../utils/Validation";
-import { RiErrorWarningFill } from "react-icons/ri";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Notification } from "../../utils/Toast";
+import Button from "./../../components/Button";
+import Error from "./../../components/Error";
 
 const Signup = () => {
   const [dataForm, setDataForm] = useState({
@@ -19,7 +20,7 @@ const Signup = () => {
   const [touch, setTouch] = useState({});
 
   useEffect(() => {
-    setErorrs(validation(dataForm));
+    setErorrs(validation(dataForm, "signup"));
   }, [dataForm]);
 
   const changeHandler = (e) => {
@@ -58,8 +59,8 @@ const Signup = () => {
       </h1>
 
       <form className="flex flex-col gap-y-5" onSubmit={submitHandler}>
+        {/* name */}
         <div className="flex flex-col gap-2">
-          {/* name */}
           <label htmlFor="name">name</label>
           <input
             type="name"
@@ -73,12 +74,7 @@ const Signup = () => {
             onChange={changeHandler}
             onFocus={focusHandler}
           />
-          {errors.name && touch.name && (
-            <p className="text-sm flex items-center gap-x-2 text-red-700 bg-red-200 p-2 rounded-md font-medium">
-              <RiErrorWarningFill className="text-xl" />
-              {errors.name}
-            </p>
-          )}
+          {errors.name && touch.name && <Error error={errors.name} />}
         </div>
         {/* email */}
         <div className="flex flex-col gap-2">
@@ -95,12 +91,7 @@ const Signup = () => {
             onChange={changeHandler}
             onFocus={focusHandler}
           />
-          {errors.email && touch.email && (
-            <p className="text-sm flex items-center gap-x-2 text-red-700 bg-red-200 p-2 rounded-md font-medium">
-              <RiErrorWarningFill className="text-xl" />
-              {errors.email}
-            </p>
-          )}
+          {errors.email && touch.email && <Error error={errors.email} />}
         </div>
         {/* password */}
         <div className="flex flex-col gap-2">
@@ -118,10 +109,7 @@ const Signup = () => {
             onFocus={focusHandler}
           />
           {errors.password && touch.password && (
-            <p className="text-sm flex items-center gap-x-2 text-red-700 bg-red-200 p-2 rounded-md font-medium">
-              <RiErrorWarningFill className="text-xl" />
-              {errors.password}
-            </p>
+            <Error error={errors.password} />
           )}
         </div>
         {/* confirem password */}
@@ -142,10 +130,7 @@ const Signup = () => {
             onFocus={focusHandler}
           />
           {errors.confiremPassword && touch.confiremPassword && (
-            <p className="text-sm flex items-center gap-x-2 text-red-700 bg-red-200 p-2 rounded-md font-medium">
-              <RiErrorWarningFill className="text-xl" />
-              {errors.confiremPassword}
-            </p>
+            <Error error={errors.confiremPassword} />
           )}
         </div>
         {/* checkbox roles */}
@@ -163,17 +148,9 @@ const Signup = () => {
           </label>
         </div>
         {errors.isAccepted && touch.isAccepted && (
-          <p className="text-sm flex items-center gap-x-2 text-red-700 bg-red-200 p-2 rounded-md font-medium">
-            <RiErrorWarningFill className="text-xl" />
-            {errors.isAccepted}
-          </p>
+          <Error error={errors.isAccepted} />
         )}
-        <button
-          type="submit"
-          className="bg-indigo-600 text-white px-7 py-4 rounded-md transition-colors hover:bg-indigo-700"
-        >
-          Sign up
-        </button>
+        <Button type="submit" text="Sign Up" />
 
         <p className="text-gray-600 text-sm text-center">
           alredy have account?
