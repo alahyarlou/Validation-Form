@@ -35,7 +35,7 @@ $ npm start
 
 ## Download
 
-You can [download]( https://github.com/alahyarlou/Validation-Form.git) the latest installable version of Markdownify for Windows, macOS and Linux.
+You can [download](https://codeload.github.com/alahyarlou/Validation-Form/zip/refs/heads/main) the latest installable version of Markdownify for Windows, macOS and Linux.
 
 ## Credits
 
