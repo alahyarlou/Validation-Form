@@ -21,7 +21,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 
 ```bash
 # Clone this repository
-$ git clone 
+$ git clone https://github.com/alahyarlou/Validation-Form.git
 
 # Go into the repository https://github.com/alahyarlou/Validation-Form.git
 $ cd Validation-Form
